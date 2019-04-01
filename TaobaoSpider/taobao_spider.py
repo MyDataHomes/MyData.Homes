@@ -83,6 +83,14 @@ def get_user_action(cookie):
     return user_action
 
 
+def taobao_user_cookie(cookie):
+    user_action = get_user_action(cookie)
+    p = open('user_action.json', 'w+')
+    p.seek(0)
+    p.write(user_action)
+    p.close()
+
+
 if __name__ == '__main__':
     # input your own cookie
     cookie = ""
