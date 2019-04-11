@@ -42,7 +42,7 @@ class CreateFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.OnClickJingdong, btn_jd)
 
         # add xiecheng button
-        pic_jd = wx.Image('img/icon/xc.bmp', wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        pic_jd = wx.Image('resource/icon/xc.bmp', wx.BITMAP_TYPE_BMP).ConvertToBitmap()
         btn_jd = wx.BitmapButton(self.pnl, -1, pic_jd, pos=(275, 25), size=(100, 100))
         wx.StaticText(self.pnl, -1, '携程', pos=(309, 130))
         self.Bind(wx.EVT_BUTTON, self.OnClickXiecheng, btn_jd)
