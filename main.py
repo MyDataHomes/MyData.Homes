@@ -36,7 +36,7 @@ class CreateFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON, self.OnClickTaobao, btn_tb)
 
         # add jingdong button
-        pic_jd = wx.Image('img/icon/jd.bmp', wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        pic_jd = wx.Image('resource/icon/jd.bmp', wx.BITMAP_TYPE_BMP).ConvertToBitmap()
         btn_jd = wx.BitmapButton(self.pnl, -1, pic_jd, pos=(150, 25), size=(100, 100))
         wx.StaticText(self.pnl, -1, '京东', pos=(184, 130))
         self.Bind(wx.EVT_BUTTON, self.OnClickJingdong, btn_jd)
