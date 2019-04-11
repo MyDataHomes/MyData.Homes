@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 from JdSpider.jd_spider import jd_user_cookie
 from TaobaoSpider.taobao_spider import taobao_user_cookie
+from XcSpider.xiecheng_spider import xc_user_cookie
 
 
 class CreateFrame(wx.Frame):
@@ -39,6 +40,12 @@ class CreateFrame(wx.Frame):
         btn_jd = wx.BitmapButton(self.pnl, -1, pic_jd, pos=(150, 25), size=(100, 100))
         wx.StaticText(self.pnl, -1, '京东', pos=(184, 130))
         self.Bind(wx.EVT_BUTTON, self.OnClickJingdong, btn_jd)
+
+        # add xiecheng button
+        pic_jd = wx.Image('img/icon/xc.bmp', wx.BITMAP_TYPE_BMP).ConvertToBitmap()
+        btn_jd = wx.BitmapButton(self.pnl, -1, pic_jd, pos=(275, 25), size=(100, 100))
+        wx.StaticText(self.pnl, -1, '携程', pos=(309, 130))
+        self.Bind(wx.EVT_BUTTON, self.OnClickXiecheng, btn_jd)
 
     def Automation(self, url):
         option = ChromeOptions()
@@ -104,6 +111,20 @@ class CreateFrame(wx.Frame):
         if cookie:
             try:
                 jd_user_cookie(cookie)
+            except:
+                self.fail()
+            else:
+                self.promptEnd()
+
+    def OnClickXiecheng(self, event):
+        self.promptStart()
+        url = 'https://passport.ctrip.com/user/login'
+        self.Automation(url)
+        login_element = "[class='set-text']"
+        cookie = self.getCookie(login_element)
+        if cookie:
+            try:
+                xc_user_cookie(cookie)
             except:
                 self.fail()
             else:
