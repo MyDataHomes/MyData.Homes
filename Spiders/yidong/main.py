@@ -65,6 +65,7 @@ class YiDong(object):
                     sheet.write(sheet_count, 0, month)
                     sheet.write(sheet_count, 1, bill_item[0]['itemName'])
                     sheet.write(sheet_count, 2, bill_item[0]['itemValue'])
+        book.close()
 
 
     def get_bill_info(self):
